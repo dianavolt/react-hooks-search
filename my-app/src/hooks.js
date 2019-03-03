@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
+
 
 export const useSearch = (query) => {
     const [state, setState] = useState({
@@ -8,8 +9,25 @@ export const useSearch = (query) => {
         error: ''
     })
 
+    const cancelToken = useRef(null)
+
     useEffect(() => {
-        axios.get(`https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=${query}`)
+        if (query.length < 3) {
+            return
+        }
+
+        // cancel previous request if user still inputing a search
+        if (cancelToken.current) {
+            console.log('Canceling previous request...')
+            cancelToken.current.cancel()
+        }
+
+        cancelToken.current = axios.CancelToken.source()
+
+        // adding origin=* to overcome the CORS error
+        axios.get(`https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=${query}`, {
+            cancelToken: cancelToken.current.token
+        })
             .then(function (response) {
                 const parsedResponse = []
 
@@ -27,6 +45,10 @@ export const useSearch = (query) => {
                 })
             })
             .catch(function (e) {
+                if(axios.isCancel(e)) {
+                    return
+                }
+
                 setState({
                     articles: [],
                     status: 'ERROR',
