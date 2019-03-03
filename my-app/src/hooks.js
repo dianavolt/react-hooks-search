@@ -60,7 +60,7 @@ export const useSearch = (query) => {
     return state
 }
 
-export const useDebounce = (val, delay) => {
+export const useDebounce = (val, delay = 500) => {
     const [debounceVal, setDebounceVal] = useState(val)
 
     useEffect(() => {
