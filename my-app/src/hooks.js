@@ -59,3 +59,19 @@ export const useSearch = (query) => {
 
     return state
 }
+
+export const useDebounce = (val, delay) => {
+    const [debounceVal, setDebounceVal] = useState(val)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebounceVal(val)
+        }, delay)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [val, delay])
+
+    return debounceVal
+}
