@@ -1,16 +1,16 @@
-import React, { Children, useState } from 'react'
+import React, { useState } from 'react'
 import ReactAutocomplete from 'react-autocomplete'
 import {
     useSearch,
-    useDebounce
+    useDebounce,
+    useSearchForm
 } from './hooks'
 
 import Input from './components/Input'
 
 function App() {
-    const [value, setValue] = useState('')
-
-    const { articles } = useSearch(useDebounce(value))
+    const { searchVal, onSearchChange} = useSearchForm()
+    const { articles } = useSearch(useDebounce(searchVal))
 
     return (
         <ReactAutocomplete
@@ -18,14 +18,17 @@ function App() {
             renderInput={Input}
             inputProps={{placeholder: 'Enter search term...'}}
             getItemValue={item => item.label}
-            renderMenu={(children, value, style) => (
-                <div style={{...style}} className="input-suggestions">
-                    {children}
-                    <a href={`/search/query=${value}`} className='search-link'>
-                        See all results
-                    </a>
-                </div>
-            )}
+            renderMenu={(children, value, style) => {
+                return (articles && articles.length > 0)?
+                    (<div style={{...style}} className="input-suggestions">
+                        {children}
+                        
+                        <a href={`/search/query=${value}`} className='search-link'>
+                            See all results
+                        </a>
+                    </div>
+                    ) : <></>
+            }}
             renderItem={(item, highlighted) =>
                 <div
                     key={item.id}
@@ -34,9 +37,8 @@ function App() {
                     {item.label}
                 </div>
             }
-            value={value}
-            onChange={e => setValue(e.target.value)}
-            onSelect={value => setValue( value )}
+            value={searchVal}
+            onChange={onSearchChange}
         />
     )
 }
