@@ -1,4 +1,9 @@
-import { useEffect, useState, useRef } from 'react'
+import {
+    useEffect,
+    useState,
+    useRef,
+    useCallback
+} from 'react'
 import axios from 'axios'
 
 
@@ -79,7 +84,10 @@ export const useDebounce = (val, delay = 500) => {
 export const useSearchForm = () => {
     const [searchVal, setSearchVal] = useState('')
     
-    const onSearchChange = (e) => setSearchVal(e.target.value)
+    const onSearchChange = useCallback((e) => {
+        setSearchVal(e.target.value)},
+        []
+    )
 
     return {
         searchVal,
