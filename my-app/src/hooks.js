@@ -12,9 +12,9 @@ export const useSearch = (query) => {
     const cancelToken = useRef(null)
 
     useEffect(() => {
-        // if (query.length < 3) {
-        //     return
-        // }
+        if (query.length < 3) {
+            return
+        }
 
         // cancel previous request if user still inputing a search
         if (cancelToken.current) {
@@ -77,7 +77,7 @@ export const useDebounce = (val, delay = 500) => {
 }
 
 export const useSearchForm = () => {
-    const [searchVal, setSearchVal] = useState()
+    const [searchVal, setSearchVal] = useState('')
     
     const onSearchChange = (e) => setSearchVal(e.target.value)
 
