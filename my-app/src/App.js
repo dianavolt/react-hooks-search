@@ -1,46 +1,18 @@
-import React, { useState } from 'react'
-import ReactAutocomplete from 'react-autocomplete'
-import {
-    useSearch,
-    useDebounce,
-    useSearchForm
-} from './hooks'
+import React from 'react'
+import Container from './components/Container'
+import Autocomplete from './components/Autocomplete'
 
-import Input from './components/Input'
 
-function App() {
-    const { searchVal, onSearchChange} = useSearchForm()
-    const { articles } = useSearch(useDebounce(searchVal))
-
-    return (
-        <ReactAutocomplete
-            items={articles}
-            renderInput={Input}
-            inputProps={{placeholder: 'Enter search term...'}}
-            getItemValue={item => item.label}
-            renderMenu={(children, value, style) => {
-                return (articles && articles.length > 0)?
-                    (<div style={{...style}} className="input-suggestions">
-                        {children}
-                        
-                        <a href={`/search/query=${value}`} className='search-link'>
-                            See all results
-                        </a>
-                    </div>
-                    ) : <></>
-            }}
-            renderItem={(item, highlighted) =>
-                <div
-                    key={item.id}
-                    style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
-                >
-                    {item.label}
-                </div>
-            }
-            value={searchVal}
-            onChange={onSearchChange}
-        />
-    )
-}
+const App = () => (
+    <Container>
+        {({searchVal, onSearchChange, articles}) => 
+            <Autocomplete
+                searchVal={searchVal}
+                onSearchChange={onSearchChange}
+                articles={articles}
+            />
+        }
+    </Container>
+)
 
 export default App
