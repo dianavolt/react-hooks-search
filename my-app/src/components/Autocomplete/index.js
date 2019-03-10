@@ -15,7 +15,6 @@ const Autocomplete = ({ articles, searchVal, onSearchChange }) => (
             return (articles && articles.length > 0)?
                 (<div style={{...style}} className="input-suggestions">
                     {children}
-                    
                     <a href={`/search/query=${value}`} className='search-link'>
                         See all results
                     </a>
@@ -27,7 +26,7 @@ const Autocomplete = ({ articles, searchVal, onSearchChange }) => (
                 key={item.id}
                 style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
             >
-                {item.label}
+                <a href={item.id} target="_blank">{item.label}</a>
             </div>
         }
         value={searchVal}
