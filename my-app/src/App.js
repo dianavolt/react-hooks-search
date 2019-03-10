@@ -5,24 +5,18 @@ import {
     Switch
 } from 'react-router-dom'
 
+import Home from './pages/Home'
+import Search from './pages/Search'
+import NotFound from './pages/NotFound'
 
 const App = () => (
     <Router>
         <Switch>
-            <Route exact path='/' render={() => <div> Home </div>} />
-            <Route path='/search' render={() => <div> Search </div>} />
-            <Route render={() => <div> Page not found... </div>} />
+            <Route exact path='/' component={Home} />
+            <Route path='/search' component={Search} />
+            <Route component={NotFound} />
         </Switch>
     </Router>
-// <Container>
-//     {({searchVal, onSearchChange, articles}) => 
-//         <Autocomplete
-//             searchVal={searchVal}
-//             onSearchChange={onSearchChange}
-//             articles={articles}
-//         />
-//     }
-// </Container>
 )
 
 export default App
