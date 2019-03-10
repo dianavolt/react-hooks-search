@@ -3,6 +3,8 @@ import ReactAutocomplete from 'react-autocomplete'
 
 import Input from '../Input'
 
+import './styles.scss'
+
 const Autocomplete = ({ articles, searchVal, onSearchChange }) => (
     <ReactAutocomplete
         items={articles}

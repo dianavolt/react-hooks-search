@@ -1,8 +1,14 @@
 .input-field {
-    padding: 15px 20px;
+    background: #ffffff;
     border: 1px solid grey;
-    border-radius: 5px;
+    border-radius: 2px;
     font-size: 24;
+    padding: 0 10px;
+    width: 100%;
+    display: flex;
+    z-index: 3;
+    width: 200px;
+    box-sizing: border-box;
 
     &:focus {
         box-shadow: none;
