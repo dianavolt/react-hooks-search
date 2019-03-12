@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../../components/Container'
 import Autocomplete from '../../components/Autocomplete'
+import SearchItems from '../../components/SearchItem'
 import { useSearch } from '../../hooks'
 
 const Search = ({...props}) => {
@@ -24,13 +25,7 @@ const Search = ({...props}) => {
             {!articles.length && status === 'SUCCESS'
                 ? <h3>No items found for: {query}</h3>
                 : articles.map(article => {
-                    return (
-                        <div key={article.id}>
-                            <a href={article.id} target="_blank">
-                                {article.label}
-                            </a>
-                        </div>
-                    )
+                    return <SearchItems {...article} key={article.id} />
                 })
             }
         </div>
