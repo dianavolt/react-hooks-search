@@ -1,8 +1,10 @@
 import React from 'react'
 
+import './styles.scss'
+
 const SearchItems = ({ id, label }) => {
     return (
-        <div>
+        <div className="search-item">
             <a href={id} target="_blank">
                 {label}
             </a>
