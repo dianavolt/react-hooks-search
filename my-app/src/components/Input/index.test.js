@@ -1,14 +1,21 @@
 import React from 'react'
-import { render } from 'react-testing-library'
+import { shallow } from 'enzyme'
 
 import Input from '.'
+
+const render = (props) => shallow(<Input {...props} />)
 
 describe('Input component', () => {
     let test
     let props
 
-    it('should match snapshot', () => {
-        test = render(<Input {...props}/>)
-        expect(test).toMatchSnapshot()
+    describe('without props', () => {
+        beforeEach(() => {
+            test = render(props)
+        })
+
+        it('should match snapshot', () => {
+            expect(test).toMatchSnapshot()
+        })
     })
 })
