@@ -18,4 +18,20 @@ describe('Input component', () => {
             expect(test).toMatchSnapshot()
         })
     })
+
+    
+    describe('with props', () => {
+        beforeEach(() => {
+            props = {
+                placehoder: 'Enter search terms',
+                name: 'search'
+            }
+
+            test = render(props)
+        })
+
+        it('should match snapshot', () => {
+            expect(test).toMatchSnapshot()
+        })
+    })
 })
