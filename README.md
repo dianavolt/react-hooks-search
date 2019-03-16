@@ -6,3 +6,12 @@ Simple Wikipedia Search App in React with Storybook for component managment
 ```bash
 npm install
 ```
+
+## Testing
+```bash
+npm test
+
+npm test -- --coverage
+```
+
+Testing Coverage: file:/StorybookSearch/my-app/coverage/lcov-report/index.html
