@@ -16,8 +16,6 @@ exports[`Autocomplete component when passing in articles should match renderMenu
 </div>
 `;
 
-exports[`Autocomplete component when renderItem prop is called should match renderMenu() snapshot 1`] = `<React.Fragment />`;
-
 exports[`Autocomplete component when renderItem prop is called when item is NOT highlighted should match renderItem snapshot 1`] = `
 <div
   style={

@@ -23,7 +23,7 @@ describe('Autocomplete component', () => {
         beforeEach(() => {
             props = {
                 articles: [1],
-                searchValue: 'Search value',
+                searchVal: 'Search value',
                 onSearchChange: jest.fn()
             }
             test = render(props)
@@ -40,7 +40,7 @@ describe('Autocomplete component', () => {
         beforeEach(() => {
             props = {
                 articles: null,
-                searchValue: 'Search value',
+                searchVal: 'Search value',
                 onSearchChange: jest.fn()
             }
             test = render(props)
