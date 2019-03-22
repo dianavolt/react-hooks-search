@@ -7,7 +7,7 @@ import {
 import axios from 'axios'
 
 
-export const useSearch = (query, limit = 10) => {
+export const useSearch = (query = '', limit = 10) => {
     const [state, setState] = useState({
         articles: [],
         status: 'IDLE',
@@ -17,7 +17,7 @@ export const useSearch = (query, limit = 10) => {
     const cancelToken = useRef(null)
 
     useEffect(() => {
-        if (query != null && query.length < 3) {
+        if (query.length < 3) {
             return
         }
 
@@ -27,6 +27,8 @@ export const useSearch = (query, limit = 10) => {
         }
 
         cancelToken.current = axios.CancelToken.source()
+
+        setState({ ...state, status: 'PENDING' })
 
         // adding origin=* to overcome the CORS error
         axios.get(`https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=${query}&limit=${limit}`, {
