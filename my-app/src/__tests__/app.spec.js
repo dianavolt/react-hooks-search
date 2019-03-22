@@ -4,7 +4,8 @@ import { MemoryRouter } from 'react-router-dom'
 
 import App from '../App'
 
-const render = (initialEntries) => <MemoryRouter initialEntries={initialEntries}><App/></MemoryRouter>
+// keyLength adds consistency to test snapshots
+const render = (initialEntries) => <MemoryRouter keyLength={0} initialEntries={initialEntries}><App/></MemoryRouter>
 
 describe('App component', () => {
     let test
