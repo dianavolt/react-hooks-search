@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactAutocomplete from 'react-autocomplete'
+import PropTypes from 'prop-types'
 
 import Input from '../Input'
 
@@ -15,7 +16,7 @@ const Autocomplete = ({ articles, searchVal, onSearchChange }) => (
             return (articles && articles.length > 0)?
                 (<div style={{...style}} className="input-suggestions">
                     {children}
-                    <a href={`/search/query=${value}`} className='search-link'>
+                    <a href={`/search?query=${value}`} className='search-link'>
                         See all results
                     </a>
                 </div>
@@ -33,5 +34,10 @@ const Autocomplete = ({ articles, searchVal, onSearchChange }) => (
         onChange={onSearchChange}
     />
 )
+
+Autocomplete.propTypes = {
+    articles: PropTypes.array,
+    searchVal:PropTypes.string
+}
 
 export default Autocomplete
