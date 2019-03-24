@@ -17,7 +17,7 @@ export const useSearch = (query = '', limit = 10) => {
     const cancelToken = useRef(null)
 
     useEffect(() => {
-        if (query.length < 3) {
+        if (query != null && query.length < 3) {
             return
         }
 
