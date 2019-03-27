@@ -3,13 +3,12 @@ import Container from '../../components/Container'
 import Autocomplete from '../../components/Autocomplete'
 
 import './styles.scss'
-
-const logoSrc = 'https://upload.wikimedia.org/wikipedia/commons/7/77/Wikipedia_svg_logo.svg'
+import logo from '../../assets/Wikipedia-logo.png'
 
 const Home = () => {
     return (
         <div className='home-page-container'>
-            <img alt='logo' src={logoSrc} />
+            <img alt='logo' src={logo} />
             <Container>
                 {({ articles, searchVal, onSearchChange }) => 
                 <Autocomplete 
