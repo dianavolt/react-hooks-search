@@ -11,7 +11,8 @@ npm install
 ```bash
 npm test
 
-npm test -- --coverage
+// coverage report
+npm run test:ci
 ```
 
 Testing Coverage: file:/StorybookSearch/my-app/coverage/lcov-report/index.html
