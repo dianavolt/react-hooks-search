@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchItem component with props should match snapshot 1`] = `
+<div
+  className="search-item"
+>
+  <a
+    href="testID123"
+    target="_blank"
+  >
+    searchTerm
+  </a>
+  <p>
+    testID123
+  </p>
+</div>
+`;
+
+exports[`SearchItem component withuot props should match snapshot 1`] = `
+<div
+  className="search-item"
+>
+  <a
+    target="_blank"
+  />
+  <p />
+</div>
+`;
