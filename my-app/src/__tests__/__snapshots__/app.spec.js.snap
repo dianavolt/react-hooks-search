@@ -25,3 +25,20 @@ exports[`App component when Not Found page is rendered should match the Not Foun
   <App />
 </MemoryRouter>
 `;
+
+exports[`App component without props should match snapshot 1`] = `
+<Switch>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    component={[Function]}
+    path="/search"
+  />
+  <Route
+    component={[Function]}
+  />
+</Switch>
+`;
