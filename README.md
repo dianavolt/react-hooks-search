@@ -11,8 +11,9 @@ npm install
 ```bash
 npm test
 
-// coverage report
+// generate coverage report
 npm run test:ci
-```
 
-Testing Coverage: file:/StorybookSearch/my-app/coverage/lcov-report/index.html
+// open coverage report
+npm run view:cov
+```
