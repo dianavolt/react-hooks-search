@@ -1,6 +1,6 @@
-# StorybookSearch
+# react-hooks-search
 
-Simple Wikipedia Search App in React with Storybook for component managment
+Simple Wikipedia search web app to explore React hooks with Jest and Storybook.
 
 ## Downloading dependencies
 ```bash
